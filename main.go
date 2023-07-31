@@ -44,9 +44,12 @@ func topN() {
 	if cookie != nil && expireStr != nil {
 		expire, _ := strconv.ParseInt(*expireStr, 10, 64)
 		if expire > time.Now().Unix() {
-			service.GetTopN(ctx)
-			return
+			byrResp := service.GetTopN(ctx)
+			if byrResp != nil {
+				service.SendTopN(ctx, byrResp)
+			}
 		}
+		return
 	}
 	if service.Login(ctx) {
 		byrResp := service.GetTopN(ctx)
