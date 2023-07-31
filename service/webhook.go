@@ -42,7 +42,7 @@ func SendTopN(ctx context.Context, byrResp *ByrResp) {
 func baseDiv(b lark.CardBuilder) card.Element {
 	// 贴一下开源地址
 	return b.Div(
-		b.Field(b.Text(fmt.Sprintf("([本项目已开源，欢迎贡献代码~](%s))", "https://www.baidu.com")).LarkMd()),
+		b.Field(b.Text(fmt.Sprintf("([本项目已开源，欢迎贡献代码~](%s))", "https://github.com/whtis/byr_topn")).LarkMd()),
 	)
 }
 
