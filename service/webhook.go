@@ -33,7 +33,7 @@ func SendTopN(ctx context.Context, byrResp *ByrResp) {
 		Title(fmt.Sprintf("今日十大 %s", utils.GetYMD()))
 	msg := lark.NewMsgBuffer(lark.MsgInteractive)
 	resp, err := bot.PostNotificationV2(msg.Card(postCard.String()).Build())
-	if err == nil && resp.StatusCode == 0 {
+	if err == nil && resp.StatusCode == 0 && resp.Code == 0 {
 		// 如果确实发过了，则存储一下当日的发送情况，定时任务直接跳过当天
 		kv.Set(ctx, fmt.Sprintf(consts.SendKey, utils.GetYMD()), "true", time.Hour*12)
 	}
