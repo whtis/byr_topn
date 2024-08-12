@@ -49,7 +49,6 @@ func topN() {
 				service.SendTopN(ctx, byrResp)
 			}
 		}
-		return
 	}
 	if service.Login(ctx) {
 		byrResp := service.GetTopN(ctx)
